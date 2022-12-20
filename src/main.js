@@ -1,5 +1,6 @@
 import express from 'express'
-import { Sequelize } from 'sequelize'
+import chalk from 'chalk'
+import { Sequelize, DataTypes } from 'sequelize'
 
 const sequelize = new Sequelize(
     process.env.DB_DATABASE,
@@ -8,6 +9,9 @@ const sequelize = new Sequelize(
     {
         host:process.env.DB_HOST,
         dialect:'mysql',
+        define:{
+            freezeTableName:true
+        },
     }
 )
 const app = express()
@@ -18,10 +22,10 @@ async function init(){
     try{
         await sequelize.authenticate()
         app.listen(process.env.PORT)
-        console.info('App started on localhost...')
+        console.info(chalk.green('App started on localhost...'))
     }
     catch(e){
-        console.error(e.stack)
+        console.error(chalk.red(e.stack))
         process.exit(1)
     }
 }init()

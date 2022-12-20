@@ -16,7 +16,7 @@ services:
   db:
     image: mysql
     volumes:
-      - database:/var/lib/mysql
+      - persistence:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=data
       - MYSQL_RANDOM_ROOT_PASSWORD=forsure
@@ -25,4 +25,4 @@ services:
     ports:
       - 3306
 volumes:
-  database:
+  persistence:
