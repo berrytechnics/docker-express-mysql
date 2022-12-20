@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      - DB_DATABASE=data
+      - DB_HOST=db
+      - DB_USER=app
+      - DB_PASS=password
+    ports:
+      - 80:4200
+    restart: always
+  db:
+    image: mysql
+    volumes:
+      - database:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=data
+      - MYSQL_RANDOM_ROOT_PASSWORD=forsure
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3306
+volumes:
+  database:

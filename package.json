@@ -1,0 +1,21 @@
+{
+  "name": "docker-express-mysql",
+  "version": "1.0.0",
+  "private":true,
+  "type":"module",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start":"node src/main.js",
+    "docker:build":"docker system prune --force && docker-compose build",
+    "docker:run":"npm run docker:build && docker-compose up"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.28.0"
+  }
+}
