@@ -1,9 +1,7 @@
 version: '3'
 services:
   app:
-    build: .
-    depends_on:
-      - db
+    container_name: app
     environment:
       - MYSQL_DATABASE
       - DB_HOST
@@ -11,9 +9,11 @@ services:
       - MYSQL_PASSWORD
     ports:
       - 80:4200
-    restart: always
-  db:
-    image: mysql
+    depends_on:
+      - database
+    build: .
+  database:
+    container_name: database
     environment:
       - MYSQL_DATABASE
       - MYSQL_RANDOM_ROOT_PASSWORD
@@ -21,8 +21,8 @@ services:
       - MYSQL_PASSWORD
     ports:
       - 3306
-    restart: always
+    image: mysql
     volumes:
-      - db_persistent:/var/lib/mysql
+      - db-store:/var/lib/mysql
 volumes:
-  db_persistent: {}
+  db-store:

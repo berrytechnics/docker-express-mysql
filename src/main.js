@@ -1,30 +1,16 @@
 import express from 'express'
-import chalk from 'chalk'
-import { sequelize } from './controllers.js'
+import './database.js'
 const app = express()
-
-app.get('/',(req,res)=>res.sendStatus(200))
-
+app.get('/',(req,res,next)=>res.sendStatus(200))
 app.use((err,req,res,next)=>{
-    if(err){
-        console.error(chalk.red(err.stack))
-        res.send(JSON.stringify(err.stack,null,2))
-    }else{
-        console.error(chalk.red('An unknown error occurred!'))
-        res.status(500).send('An unknown error occurred!')
-    }
+    if(!err) next()
+    console.error(err.stack)
+    res.send(err.stack)
 })
+app.use((req,res)=>{
+    const err = new Error(`An unknown error occurred!`)
+    console.error(err)
+    res.status(500).send(err.stack)
+})
+app.listen(process.env.PORT,()=>console.log(`Listening on http://localhost:80  -:${process.env.PORT}`))
 
-async function init(){
-    try{
-        await sequelize.authenticate()
-        app.listen(process.env.PORT)
-        console.info(chalk.green('App started on localhost...'))
-    }
-    catch(e){
-        console.error(chalk.red(e.stack))
-        process.exit(1)
-    }
-}init()
-
-export {app}

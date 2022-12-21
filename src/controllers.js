@@ -7,7 +7,7 @@ async function test(){
     await user.destroy()
     console.log(user)
     const list = UserModel.findAll()
-    console.log(`${list.length} users in database`)
-}test()
+    console.log(`${list.length?list.length:0} users in database`)
+}
 
-export {sequelize}
+export {sequelize,test}

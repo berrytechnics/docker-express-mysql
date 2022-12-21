@@ -1,21 +1,14 @@
 {
   "name": "docker-express-mysql",
-  "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "",
   "main": "src/main.js",
   "scripts": {
-    "start": "node --inspect=0.0.0.0 src/main.js",
-    "start:dev": "nodemon --inspect=0.0.0.0 src/main.js",
-    "docker:build": "docker system prune --force && docker-compose build",
-    "docker:run": "npm run docker:build && docker-compose up"
+    "start": "node ./src/main.js",
+    "watch": "nodemon ./src/main.js",
+    "dev": "docker image rm docker-express-mysql-app --force && docker-compose build && docker-compose up -d"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "chalk": "^5.2.0",
     "express": "^4.18.2",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
