@@ -18,7 +18,6 @@ const UserModel = sequelize.define('User',{
         allowNull:false
     }
 })
-
 async function init(){
     try{
         await sequelize.sync()
