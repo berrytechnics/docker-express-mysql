@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from "sequelize"
 import chalk from 'chalk'
 const sequelize = new Sequelize(
-    process.env.DB_DATABASE,
+    process.env.MYSQL_DATABASE,
     process.env.MYSQL_USER,
     process.env.MYSQL_PASSWORD,
     {
@@ -18,6 +18,7 @@ const UserModel = sequelize.define('User',{
         allowNull:false
     }
 })
+
 async function init(){
     try{
         await sequelize.sync()

@@ -5,20 +5,20 @@ services:
     depends_on:
       - db
     environment:
-      - DB_DATABASE=data
-      - DB_HOST=db
-      - MYSQL_USER=app
-      - MYSQL_PASSWORD=1%ranSTring!k6i4hdu322o
+      - MYSQL_DATABASE
+      - DB_HOST
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     ports:
       - 80:4200
     restart: always
   db:
     image: mysql
     environment:
-      - MYSQL_DATABASE=data
-      - MYSQL_RANDOM_ROOT_PASSWORD=forsure
-      - MYSQL_USER=app
-      - MYSQL_PASSWORD=1%ranSTring!k6i4hdu322o
+      - MYSQL_DATABASE
+      - MYSQL_RANDOM_ROOT_PASSWORD
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     ports:
       - 3306
     restart: always
