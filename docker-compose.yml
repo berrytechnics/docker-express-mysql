@@ -11,8 +11,9 @@ services:
       - 80:4200
     depends_on:
       - database
-    volumes:
-      - ./:/usr/src/app/docker-express-mysql
+### This should allow nodemon to work but does not currently      
+#    volumes:
+#      - ./:/usr/src/app/docker-express-mysql
     build: .
   database:
     container_name: database
