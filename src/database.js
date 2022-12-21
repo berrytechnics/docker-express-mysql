@@ -15,7 +15,7 @@ async function init(){
    await sequelize.authenticate()
    console.log(`Database listening at 3306`)
 }init().catch(e=>{
-    console.error(e)
+    console.error(e.stack)
     process.exit(1)
 })
 export { sequelize }
