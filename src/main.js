@@ -1,22 +1,19 @@
 import express from 'express'
 import chalk from 'chalk'
-import { Sequelize, DataTypes } from 'sequelize'
-
-const sequelize = new Sequelize(
-    process.env.DB_DATABASE,
-    process.env.DB_USER,
-    process.env.DB_PASS,
-    {
-        host:process.env.DB_HOST,
-        dialect:'mysql',
-        define:{
-            freezeTableName:true
-        },
-    }
-)
+import { sequelize } from './controllers.js'
 const app = express()
 
 app.get('/',(req,res)=>res.sendStatus(200))
+
+app.use((err,req,res,next)=>{
+    if(err){
+        console.error(chalk.red(err.stack))
+        res.send(JSON.stringify(err.stack,null,2))
+    }else{
+        console.error(chalk.red('An unknown error occurred!'))
+        res.status(500).send('An unknown error occurred!')
+    }
+})
 
 async function init(){
     try{
@@ -29,3 +26,5 @@ async function init(){
         process.exit(1)
     }
 }init()
+
+export {app}

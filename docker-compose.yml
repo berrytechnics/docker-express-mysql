@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   app:
     build: .
@@ -8,21 +7,22 @@ services:
     environment:
       - DB_DATABASE=data
       - DB_HOST=db
-      - DB_USER=app
-      - DB_PASS=password
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=1%ranSTring!k6i4hdu322o
     ports:
       - 80:4200
     restart: always
   db:
     image: mysql
-    volumes:
-      - persistence:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=data
       - MYSQL_RANDOM_ROOT_PASSWORD=forsure
       - MYSQL_USER=app
-      - MYSQL_PASSWORD=password
+      - MYSQL_PASSWORD=1%ranSTring!k6i4hdu322o
     ports:
       - 3306
+    restart: always
+    volumes:
+      - db_persistent:/var/lib/mysql
 volumes:
-  persistence:
+  db_persistent: {}
