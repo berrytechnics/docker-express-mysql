@@ -24,9 +24,10 @@ app.post('/login',async(req,res,next)=>{
     res.json(foundUser)
 })
 app.post('/auth',async(req,res,next)=>{
+    const response = {status:null}
     const token = req.headers.authorization.split(" ")[1]
-    const auth = await UserController.auth(token)
-    auth ? res.json({status:'Authorized'}):res.json({status:"Not authorized"})
+    UserController.auth(token) ? response.status = "Authorized" : response.status = "Unauthorized"
+    res.json(response)
 })
 app.use((err,req,res,next)=>err?res.send(err.message):res.sendStatus(404))
 app.listen(process.env.PORT,()=>console.log(`Listening on http://localhost:80  :${process.env.PORT}`))

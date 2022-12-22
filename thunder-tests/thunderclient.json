@@ -1,0 +1,77 @@
+[
+  {
+    "_id": "a53f8563-6b82-4f26-96e8-a33ce2abeeb7",
+    "colId": "89ab918b-e044-4a6c-b48a-f4a10743196d",
+    "containerId": "",
+    "name": "localhost/auth",
+    "url": "localhost/auth",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-12-22T02:49:06.801Z",
+    "modified": "2022-12-22T03:07:33.339Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcxNjc4NDQzLCJleHAiOjE2NzE3MDAwNDN9.7k9OQRNcM48yuyT3eBwp0II1nYPqy-P4_ATwb646JTA"
+    },
+    "tests": []
+  },
+  {
+    "_id": "21a9d047-4b91-473e-8b38-6712179bcde8",
+    "colId": "89ab918b-e044-4a6c-b48a-f4a10743196d",
+    "containerId": "",
+    "name": "localhost/login",
+    "url": "localhost/login",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-12-22T02:49:12.527Z",
+    "modified": "2022-12-22T02:49:12.527Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\":\"testy@email.com\",\n  \"password\":\"password\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "0c3c79e8-84ca-4d39-bfa3-6604834c77e9",
+    "colId": "89ab918b-e044-4a6c-b48a-f4a10743196d",
+    "containerId": "",
+    "name": "localhost/register",
+    "url": "localhost/register",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-12-22T02:49:26.561Z",
+    "modified": "2022-12-22T02:49:26.561Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"firstName\":\"Testy\",\n  \"lastName\":\"McTesterson\",\n  \"email\":\"testy@email.com\",\n  \"password\":\"password\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "18d07c0a-4b1e-46b0-8503-d233b34094d1",
+    "colId": "89ab918b-e044-4a6c-b48a-f4a10743196d",
+    "containerId": "",
+    "name": "localhost/login",
+    "url": "localhost/login",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2022-12-22T02:49:33.420Z",
+    "modified": "2022-12-22T02:49:33.420Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\":\"testy@email.com\",\n  \"password\":\"password\"\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
