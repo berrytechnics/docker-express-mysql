@@ -6,10 +6,13 @@
   "scripts": {
     "start": "node ./src/main.js",
     "watch": "nodemon -L ./src/main.js",
-    "dev": "docker image rm docker-express-mysql-app --force && docker-compose build && docker-compose up"
+    "dev": "docker image rm docker-express-mysql-app --force && docker-compose build && docker-compose up",
+    "dev -d": "docker image rm docker-express-mysql-app --force && docker-compose build && docker-compose up -d"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.28.0"
   }
