@@ -7,4 +7,4 @@ RUN mv /usr/src/app/node_modules /usr/src/node_modules
 COPY . .
 ENV PORT=4200
 EXPOSE 4200
-CMD ["yarn","start"]
+CMD ["yarn","watch"]

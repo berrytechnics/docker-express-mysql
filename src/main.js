@@ -2,7 +2,7 @@ import express from 'express'
 import { test } from './controllers.js'
 const app = express()
 
-app.get('/',(req,res,next)=>res.sendStatus(200))
+app.get('/',(req,res,next)=>res.sendStatus(500))
 app.get('/test',(req,res)=>{
     test().then(()=>res.sendStatus(200))
 })
