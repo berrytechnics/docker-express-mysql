@@ -8,7 +8,11 @@ const _postRegister = async(user)=>UserModel.findOrCreate({
 })
 
 const UserController = {
-    auth:token=>jwt.verify(token,process.env.JWT_SECRET),
+    auth:(req,res,next)=>{
+        const token = jwt.verify(req.headers.authorization.split(" ")[1],process.env.JWT_SECRET)
+        if(!token.iat) res.json({error:'Unauthorized'})
+        else next()
+    },
     register:async(user)=>{
         user.password = await bCrypt.hash(user.password,10)
         return await _postRegister(user)
