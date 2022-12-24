@@ -1,12 +1,10 @@
 import bCrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { UserModel } from "./models.js"
-
-const _postRegister = async(user)=>UserModel.findOrCreate({
+import { UserModel as User } from "./models.js"
+const _postRegister = async(user)=>User.findOrCreate({
     where:{email:user.email},
     defaults:user
 })
-
 const UserController = {
     auth:(req,res,next)=>{
         const token = jwt.verify(req.headers.authorization.split(" ")[1],process.env.JWT_SECRET)
@@ -18,7 +16,7 @@ const UserController = {
         return await _postRegister(user)
     },
     login:async(user)=>{
-        const foundUser = await UserModel.findOne({
+        const foundUser = await User.findOne({
             where:{email:user.email}
         })
         const auth = await bCrypt.compare(user.password,foundUser.password)
@@ -27,5 +25,4 @@ const UserController = {
     },
     deregister:async(user)=>{}
 }
-
 export { UserController }
