@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node ./src/main.js",
     "watch": "nodemon -L ./src/main.js",
-    "dev": "docker image rm docker-express-mysql-app --force && docker-compose build && docker-compose up",
-    "dev -d": "docker image rm docker-express-mysql-app --force && docker-compose build && docker-compose up -d"
+    "dev": "docker image rm docker-express-mysql-app --force && docker-compose build && docker-compose up -d"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
